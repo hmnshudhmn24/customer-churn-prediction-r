@@ -1,40 +1,79 @@
-# 📉 Customer Churn Prediction (Fixed)
+Name: Customer Churn Prediction
+Description: |
+  📉 **Customer Churn Prediction** aims to predict which customers are likely to leave a company using historical data. 
+  This project uses the **Telecom Churn dataset** from Kaggle, applying **Logistic Regression** and **Decision Tree** models 
+  to classify customers as "Churn" or "No Churn".
+  
+  The pipeline includes:
+  - Data Preprocessing and Cleaning
+  - Feature Engineering
+  - Model Training and Tuning
+  - Evaluation with **AUC**, **Precision**, and **Recall**
+  
+  This project is built in **R** using packages such as:
+  - Tidyverse
+  - Caret
+  - Rpart
+  - pROC
+  
+Dataset:
+  Source: Kaggle Telecom Churn Dataset
+  Link: https://www.kaggle.com/blastchar/telco-customer-churn
+  File: telecom_churn.csv
 
-This ZIP includes a **robust** R script that trains and evaluates churn prediction models.
-The script now checks for common dataset filenames and gives a clear, actionable message if the dataset is missing.
+Features:
+  - Gender: Customer gender (Male/Female)
+  - SeniorCitizen: Whether the customer is a senior citizen (1 or 0)
+  - Partner: Whether the customer has a partner
+  - Dependents: Whether the customer has dependents
+  - Tenure: Number of months the customer has stayed
+  - PhoneService: Whether the customer has phone service
+  - MultipleLines: Whether the customer has multiple lines
+  - InternetService: Type of internet service
+  - OnlineSecurity, OnlineBackup, DeviceProtection, TechSupport: Optional internet features
+  - StreamingTV, StreamingMovies: Streaming services usage
+  - Contract: Contract type
+  - PaperlessBilling: Whether the customer has paperless billing
+  - PaymentMethod: Payment method
+  - MonthlyCharges: Monthly charges
+  - TotalCharges: Total charges
+  - Churn: Target variable (Yes/No)
 
-## Files in this ZIP
-- `customer_churn_prediction.R` — Main R script (robust; checks for dataset files).
-- `README.md` — This file with instructions.
+Model_Pipeline:
+  Preprocessing:
+    - Convert categorical variables to factors
+    - Handle missing values
+    - Scale numeric features
+  Training:
+    - Logistic Regression (Caret)
+    - Decision Tree (Rpart)
+  Evaluation:
+    - Confusion Matrix
+    - AUC-ROC Curve
+    - Precision & Recall
 
-## How to use
-1. Download the Telco Customer Churn dataset (Kaggle: https://www.kaggle.com/blastchar/telco-customer-churn).
-2. Place the CSV in the same folder as the R script. Acceptable filenames:
-   - `Telco-Customer-Churn.csv`
-   - `WA_Fn-UseC_-Telco-Customer-Churn.csv`
-   - `telecom_churn.csv`
-   - `Telco_Customer_Churn.csv`
-   - `customer_churn.csv`
-3. Open R or RStudio in this folder and run:
-   ```r
-   source("customer_churn_prediction.R")
-   ```
-4. Outputs created in the folder:
-   - `glm_model.rds`
-   - `rpart_model.rds`
-   - `model_metrics_summary.csv`
+Requirements:
+  R: ">=4.0"
+  Packages:
+    - tidyverse
+    - caret
+    - rpart
+    - pROC
+    - ggplot2
 
-## Requirements
-R >= 4.0
+Run_Instructions: |
+  1. Download the dataset from Kaggle and save it as `telecom_churn.csv` in your working directory.
+  2. Install the required R packages:
+     ```r
+     install.packages(c("tidyverse", "caret", "rpart", "pROC", "ggplot2"))
+     ```
+  3. Run the R script:
+     ```r
+     source("customer_churn_prediction.R")
+     ```
 
-Install required packages in R if needed:
-```r
-install.packages(c("tidyverse", "caret", "rpart", "rpart.plot", "pROC", "e1071", "readr"))
-```
-
-## Notes
-- The script now prevents the ambiguous "file not found" error by checking multiple common filenames and printing a clear message.
-- If you still see an error, check that the CSV is in the same working directory (use `getwd()` in R to confirm).
-
-## Author
-Himanshu
+Project_Structure: |
+  customer-churn-prediction/
+  ├── customer_churn_prediction.R   # Main R script
+  ├── telecom_churn.csv             # Dataset (download manually)
+  └── README.md                     # Project documentation
