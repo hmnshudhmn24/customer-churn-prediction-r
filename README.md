@@ -1,79 +1,117 @@
-Name: Customer Churn Prediction
-Description: |
-  📉 **Customer Churn Prediction** aims to predict which customers are likely to leave a company using historical data. 
-  This project uses the **Telecom Churn dataset** from Kaggle, applying **Logistic Regression** and **Decision Tree** models 
-  to classify customers as "Churn" or "No Churn".
-  
-  The pipeline includes:
-  - Data Preprocessing and Cleaning
-  - Feature Engineering
-  - Model Training and Tuning
-  - Evaluation with **AUC**, **Precision**, and **Recall**
-  
-  This project is built in **R** using packages such as:
-  - Tidyverse
-  - Caret
-  - Rpart
-  - pROC
-  
-Dataset:
-  Source: Kaggle Telecom Churn Dataset
-  Link: https://www.kaggle.com/blastchar/telco-customer-churn
-  File: telecom_churn.csv
+# 📉 Customer Churn Prediction
 
-Features:
-  - Gender: Customer gender (Male/Female)
-  - SeniorCitizen: Whether the customer is a senior citizen (1 or 0)
-  - Partner: Whether the customer has a partner
-  - Dependents: Whether the customer has dependents
-  - Tenure: Number of months the customer has stayed
-  - PhoneService: Whether the customer has phone service
-  - MultipleLines: Whether the customer has multiple lines
-  - InternetService: Type of internet service
-  - OnlineSecurity, OnlineBackup, DeviceProtection, TechSupport: Optional internet features
-  - StreamingTV, StreamingMovies: Streaming services usage
-  - Contract: Contract type
-  - PaperlessBilling: Whether the customer has paperless billing
-  - PaymentMethod: Payment method
-  - MonthlyCharges: Monthly charges
-  - TotalCharges: Total charges
-  - Churn: Target variable (Yes/No)
+## 📝 Overview
+Customer churn is a significant challenge for many businesses, especially in competitive industries like telecom, banking, and SaaS.  
+This project focuses on predicting which customers are likely to leave (churn) using **machine learning classification techniques** in R.  
+By accurately predicting churn, companies can take **proactive measures** to retain valuable customers.
 
-Model_Pipeline:
-  Preprocessing:
-    - Convert categorical variables to factors
-    - Handle missing values
-    - Scale numeric features
-  Training:
-    - Logistic Regression (Caret)
-    - Decision Tree (Rpart)
-  Evaluation:
-    - Confusion Matrix
-    - AUC-ROC Curve
-    - Precision & Recall
 
-Requirements:
-  R: ">=4.0"
-  Packages:
-    - tidyverse
-    - caret
-    - rpart
-    - pROC
-    - ggplot2
 
-Run_Instructions: |
-  1. Download the dataset from Kaggle and save it as `telecom_churn.csv` in your working directory.
-  2. Install the required R packages:
-     ```r
-     install.packages(c("tidyverse", "caret", "rpart", "pROC", "ggplot2"))
-     ```
-  3. Run the R script:
-     ```r
-     source("customer_churn_prediction.R")
-     ```
+## 📊 Dataset
+- **Source:** [Kaggle Telecom Churn Dataset](https://www.kaggle.com/datasets)
+- **Description:** Contains demographic, account, and service usage data for telecom customers.
+- **Target Variable:** `Churn` (Yes/No)
 
-Project_Structure: |
-  customer-churn-prediction/
-  ├── customer_churn_prediction.R   # Main R script
-  ├── telecom_churn.csv             # Dataset (download manually)
-  └── README.md                     # Project documentation
+### Key Columns:
+- `gender`: Customer gender (Male/Female)
+- `SeniorCitizen`: Whether the customer is a senior citizen
+- `Partner`, `Dependents`: Family status
+- `tenure`: Number of months the customer has stayed
+- `PhoneService`, `InternetService`: Service types
+- `Contract`: Type of contract (Month-to-month, One year, Two year)
+- `MonthlyCharges`, `TotalCharges`: Billing information
+- `Churn`: Target label
+
+
+
+## 🛠️ Features
+- **Data Preprocessing:**
+  - Handling missing values
+  - Encoding categorical variables
+  - Converting target column to factors
+- **Exploratory Data Analysis (EDA):**
+  - Churn rate visualization
+  - Distribution plots of tenure, charges
+- **Modeling:**
+  - Logistic Regression
+  - Decision Tree
+- **Evaluation:**
+  - Accuracy
+  - Confusion Matrix
+  - ROC Curve & AUC Score
+
+
+
+## 📈 Model Pipeline
+1. **Data Loading** → Read dataset into R.
+2. **Data Cleaning** → Handle missing/invalid data.
+3. **Feature Engineering** → Encode categorical variables.
+4. **Train-Test Split** → Split dataset into 80% training and 20% testing.
+5. **Model Training** → Train Logistic Regression & Decision Tree models.
+6. **Model Evaluation** → Evaluate using Accuracy, Precision, Recall, ROC & AUC.
+
+
+
+## 🔧 Requirements
+- **R >= 4.0**
+- **Libraries:**
+  - `tidyverse`
+  - `caret`
+  - `rpart`
+  - `pROC`
+  - `ggplot2`
+
+Install dependencies:
+```r
+install.packages(c("tidyverse", "caret", "rpart", "pROC", "ggplot2"))
+```
+
+
+
+## 🚀 Running the Project
+1. Download dataset from Kaggle and place it in your working directory.
+2. Save the provided R script as `customer_churn_prediction.R`.
+3. Run in R:
+```r
+source("customer_churn_prediction.R")
+```
+
+
+
+## 📊 Output Examples
+- **Confusion Matrix**
+- **Accuracy Score**
+- **ROC Curve with AUC value**
+- **Top contributing features plot**
+
+
+
+## 📂 Project Structure
+```bash
+customer-churn-prediction/
+│
+├── customer_churn_prediction.R   # Main R script
+├── README.md                     # Project documentation
+└── telecom_churn.csv             # Dataset (download separately)
+```
+
+
+
+## 💡 Insights
+- Month-to-month contracts and high monthly charges have strong correlation with churn.
+- Customers with shorter tenure are more likely to churn.
+
+
+
+## 📌 Business Use Case
+- Identify high-risk customers early
+- Launch targeted retention campaigns
+- Reduce revenue loss from churn
+
+
+
+## 🏆 Results
+- **AUC:** ~0.85 with Logistic Regression
+- **Most Important Factors:** Contract type, tenure, monthly charges
+
+
